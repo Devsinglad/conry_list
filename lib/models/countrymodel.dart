@@ -1,4 +1,4 @@
-class country {
+class CountryModel {
   Name? name;
   List<String>? tld;
   String? cca2;
@@ -33,7 +33,7 @@ class country {
   CapitalInfo? capitalInfo;
   PostalCode? postalCode;
 
-  country(
+  CountryModel(
       {this.name,
       this.tld,
       this.cca2,
@@ -68,7 +68,7 @@ class country {
       this.capitalInfo,
       this.postalCode});
 
-  country.fromJson(Map<String, dynamic> json) {
+  CountryModel.fromJson(Map<String, dynamic> json) {
     name = json['name'] != null ? new Name.fromJson(json['name']) : null;
     tld = json['tld'].cast<String>();
     cca2 = json['cca2'];
@@ -225,24 +225,24 @@ class NativeName {
   }
 }
 
-class Eng {
-  String? official;
-  String? common;
-
-  Eng({this.official, this.common});
-
-  Eng.fromJson(Map<String, dynamic> json) {
-    official = json['official'];
-    common = json['common'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['official'] = this.official;
-    data['common'] = this.common;
-    return data;
-  }
-}
+// class Eng {
+//   String? official;
+//   String? common;
+//
+//   Eng({this.official, this.common});
+//
+//   Eng.fromJson(Map<String, dynamic> json) {
+//     official = json['official'];
+//     common = json['common'];
+//   }
+//
+//   Map<String, dynamic> toJson() {
+//     final Map<String, dynamic> data = new Map<String, dynamic>();
+//     //data['official'] = this.official;
+//    // data['common'] = this.common;
+//     return data;
+//   }
+// }
 
 class Currencies {
   BBD? bBD;
