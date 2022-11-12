@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../../const.dart';
 import '../../provider/themeProvider.dart';
 import '../Mytext.dart';
 import '../customBox.dart';
-import 'shee.dart';
+import 'sheet.dart';
 import 'sheet_fillter.dart';
 
 class Translaton_Filter extends StatelessWidget {
@@ -60,7 +59,12 @@ class Translaton_Filter extends StatelessWidget {
                   color: provider.isDark ? Colors.white : lightModeColor,
                 ),
                 onPressed: () {
-                  showBottomSheet(
+                  showModalBottomSheet<dynamic>(
+                    isScrollControlled: true,
+                    shape: RoundedRectangleBorder(
+                      borderRadius:
+                          BorderRadius.vertical(top: Radius.circular(30)),
+                    ),
                     context: context,
                     builder: (context) => Sheet(),
                   );

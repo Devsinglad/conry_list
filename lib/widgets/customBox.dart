@@ -8,6 +8,7 @@ Widget CustomBbox({
   final Color? shadowColor,
   final BorderRadius? radius,
   final BoxShape? shapes,
+  final Border? border,
   final Widget? widget,
   final DecorationImage? image,
 }) {
@@ -18,6 +19,7 @@ Widget CustomBbox({
       image: image,
       color: color,
       borderRadius: radius,
+      border: border,
       boxShadow: [
         BoxShadow(
           color: shadowColor ?? Colors.transparent,
