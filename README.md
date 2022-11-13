@@ -30,6 +30,7 @@ Difficulty in tapping into the properties of of the API.
 -![ScreenShot](assets/image/darkMode.png)
 -![ScreenShot](assets/image/details.png)
 -![ScreenShot](assets/image/lightMode.png)
+-![ScreenShot](assets/image/translation.png)
 
 
 - [LinkedIn Profile](https://www.linkedin.com/in/simon-singlad-chuwkwu-915115244/)
