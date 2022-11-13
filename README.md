@@ -32,6 +32,12 @@ Difficulty in tapping into the properties of of the API.
 -![ScreenShot](assets/image/lightMode.png)
 
 
+- [LinkedIn Profile](https://www.linkedin.com/in/simon-singlad-chuwkwu-915115244/)
+- [Github](https://www.github.com/devsinglad)
+- [Email](simonsinglad5@gmail.com)
+
+
+
 - [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
 - [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
