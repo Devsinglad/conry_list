@@ -33,6 +33,7 @@ class _CountryListState extends State<CountryList> {
 
     if (query.isNotEmpty) {
       provider2.controller.text = query;
+
       provider2.searchResult.clear;
       provider2.searchResult = List.from(
         provider2.decodeData.where((element) => element['name']['official']
@@ -40,6 +41,7 @@ class _CountryListState extends State<CountryList> {
             .toLowerCase()
             .contains(query.toString().toLowerCase())),
       );
+
       setState(() {});
     } else {
       provider2.controller.clear();
@@ -63,10 +65,11 @@ class _CountryListState extends State<CountryList> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  MyText(
+                  CustomBbox(
                     context: context,
-                    title: 'EXPLORE.',
-                    weight: FontWeight.w700,
+                    widget: Image.asset(
+                      logo,
+                    ),
                   ),
                   CustomBbox(
                     width: MediaQuery.of(context).size.width / 8,

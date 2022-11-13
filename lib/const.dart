@@ -6,3 +6,4 @@ const DarkModeColor = Color(0xff27285C);
 const lightModeColor = Colors.black;
 const smallHeight = SizedBox(height: 8);
 const spaceHeight = SizedBox(height: 20);
+const logo = 'assets/image/country logo.png';

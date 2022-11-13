@@ -126,7 +126,8 @@ class _CountryDetailsState extends State<CountryDetails> {
                   provider: provider,
                   info: info,
                   title: 'Capital: ',
-                  subtitle: '${info['capital'][0]}'),
+                  subtitle:
+                      '${info['capital'] == null ? '' : info['capital'][0]}'),
               smallHeight,
               countryApiDetails(
                 provider: provider,
@@ -139,7 +140,8 @@ class _CountryDetailsState extends State<CountryDetails> {
                 provider: provider,
                 info: info,
                 title: 'Language: ',
-                subtitle: '${info['languages'].values.first}',
+                subtitle:
+                    '${info['languages'] == null ? 'no data' : info['languages'].values.first}',
               ),
               countryApiDetails(
                 provider: provider,
@@ -159,7 +161,8 @@ class _CountryDetailsState extends State<CountryDetails> {
                 provider: provider,
                 info: info,
                 title: 'Currency: ',
-                subtitle: '${info['currencies'].values.first['name']}',
+                subtitle:
+                    '${info['currencies'] == null ? 'no data' : info['currencies'].values.first['name']}',
               ),
               spaceHeight,
               countryApiDetails(

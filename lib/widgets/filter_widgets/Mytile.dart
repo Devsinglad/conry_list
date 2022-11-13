@@ -4,12 +4,14 @@ import '../Mytext.dart';
 
 class MyTile extends StatefulWidget {
   final String title;
+  final MaterialStateProperty<Color>? color;
 
   final OutlinedBorder? boarder;
   MyTile({
     Key? key,
     required this.title,
     this.boarder,
+    this.color,
   }) : super(key: key);
 
   @override
@@ -28,12 +30,7 @@ class _State extends State<MyTile> {
       ),
       trailing: Checkbox(
         checkColor: Colors.grey,
-        fillColor: MaterialStateProperty.resolveWith((states) {
-          if (states.contains(MaterialState.disabled)) {
-            return Colors.grey;
-          }
-          return Colors.grey;
-        }),
+        fillColor: widget.color,
         shape: widget.boarder,
         value: value,
         onChanged: (newvalue) {
