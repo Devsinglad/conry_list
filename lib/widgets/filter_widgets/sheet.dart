@@ -1,11 +1,10 @@
 import 'package:conry_list/widgets/Mytext.dart';
 import 'package:conry_list/widgets/customBox.dart';
-import 'package:conry_list/widgets/filter_widgets/sheet_fillter.dart';
+import 'package:conry_list/widgets/filter_widgets/Mytile.dart';
+import 'package:conry_list/widgets/filter_widgets/sheet_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../../const.dart';
-import '../../models/alphabets.dart';
 import '../../provider/themeProvider.dart';
 
 class Sheet extends StatefulWidget {
@@ -16,19 +15,21 @@ class Sheet extends StatefulWidget {
 }
 
 class _SheetState extends State<Sheet> {
-  var selected;
-  bool isPressed = false;
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<ThemeProvider>(context);
-    return Wrap(
-      children: [
-        Container(
-          padding: EdgeInsets.all(20),
+    return DraggableScrollableSheet(
+      snap: false,
+      controller: DraggableScrollableController(),
+      initialChildSize: 0.3,
+      maxChildSize: 0.8,
+      builder: (context, scrollController) {
+        return Container(
+          padding: const EdgeInsets.all(20),
           decoration: BoxDecoration(
             shape: BoxShape.rectangle,
             color: provider.isDark ? DarkModeColor : Colors.white,
-            borderRadius: BorderRadius.only(
+            borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(30),
               topRight: Radius.circular(30),
             ),
@@ -36,25 +37,27 @@ class _SheetState extends State<Sheet> {
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: SingleChildScrollView(
+              controller: scrollController,
               scrollDirection: Axis.vertical,
               child: Column(
                 children: [
                   SheetWidget(
-                      title: 'Filter',
-                      widget: InkWell(
-                        onTap: () {
-                          Navigator.pop(context);
-                        },
-                        child: Container(
-                          height: 20,
-                          width: 20,
-                          decoration: BoxDecoration(
-                            color: Colors.grey.withOpacity(0.5),
-                            borderRadius: BorderRadius.circular(3),
-                          ),
-                          child: Icon(Icons.close),
+                    title: 'Filter',
+                    widget: InkWell(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: Container(
+                        height: 20,
+                        width: 20,
+                        decoration: BoxDecoration(
+                          color: Colors.grey.withOpacity(0.5),
+                          borderRadius: BorderRadius.circular(3),
                         ),
-                      )),
+                        child: Icon(Icons.close),
+                      ),
+                    ),
+                  ),
                   spaceHeight,
                   ExpansionTile(
                     title: MyText(
@@ -114,6 +117,7 @@ class _SheetState extends State<Sheet> {
                       ),
                     ],
                   ),
+                  smallHeight,
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -123,9 +127,9 @@ class _SheetState extends State<Sheet> {
                         color: provider.isDark ? DarkModeColor : Colors.white,
                         radius: BorderRadius.circular(10),
                         border: Border.all(
-                            color:
-                                provider.isDark ? Colors.white : Colors.black,
-                            width: 2),
+                          color: provider.isDark ? Colors.white : Colors.black,
+                          width: 2,
+                        ),
                         context: context,
                         widget: Center(
                           child: MyText(
@@ -153,41 +157,122 @@ class _SheetState extends State<Sheet> {
               ),
             ),
           ),
-        ),
-      ],
+        );
+      },
     );
   }
 }
 
-class MyTile extends StatefulWidget {
-  final String title;
-
-  MyTile({
-    Key? key,
-    required this.title,
-  }) : super(key: key);
+class LanguageSheet extends StatefulWidget {
+  const LanguageSheet({Key? key}) : super(key: key);
 
   @override
-  State<MyTile> createState() => _State();
+  State<LanguageSheet> createState() => _LanguageSheetState();
 }
 
-class _State extends State<MyTile> {
-  bool value = false;
+class _LanguageSheetState extends State<LanguageSheet> {
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      leading: MyText(
-        context: context,
-        title: widget.title,
-        weight: FontWeight.w500,
-      ),
-      trailing: Checkbox(
-          value: value,
-          onChanged: (newvalue) {
-            setState(() {
-              value = newvalue!;
-            });
-          }),
+    final provider = Provider.of<ThemeProvider>(context);
+    return DraggableScrollableSheet(
+      snap: false,
+      controller: DraggableScrollableController(),
+      initialChildSize: 0.8,
+      maxChildSize: 0.8,
+      builder: (context, scrollController) {
+        return Container(
+          padding: const EdgeInsets.all(20),
+          decoration: BoxDecoration(
+            shape: BoxShape.rectangle,
+            color: provider.isDark ? DarkModeColor : Colors.white,
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(30),
+              topRight: Radius.circular(30),
+            ),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: SingleChildScrollView(
+              controller: scrollController,
+              scrollDirection: Axis.vertical,
+              child: Column(
+                children: [
+                  SheetWidget(
+                    title: 'Filter',
+                    widget: InkWell(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: Container(
+                        height: 20,
+                        width: 20,
+                        decoration: BoxDecoration(
+                          color: Colors.grey.withOpacity(0.5),
+                          borderRadius: BorderRadius.circular(3),
+                        ),
+                        child: Icon(Icons.close),
+                      ),
+                    ),
+                  ),
+                  spaceHeight,
+                  MyTile(
+                    title: 'Bahasa',
+                    boarder: CircleBorder(),
+                  ),
+                  MyTile(
+                    title: 'Deutsch',
+                    boarder: CircleBorder(),
+                  ),
+                  MyTile(
+                    title: 'English',
+                    boarder: CircleBorder(),
+                  ),
+                  MyTile(
+                    title: 'Español',
+                    boarder: CircleBorder(),
+                  ),
+                  MyTile(
+                    title: 'Française',
+                    boarder: CircleBorder(),
+                  ),
+                  MyTile(
+                    title: 'Italiano',
+                    boarder: CircleBorder(),
+                  ),
+                  MyTile(
+                    title: 'Bahasa',
+                    boarder: CircleBorder(),
+                  ),
+                  MyTile(
+                    title: 'Português',
+                    boarder: CircleBorder(),
+                  ),
+                  MyTile(
+                    title: 'Pу́сский',
+                    boarder: CircleBorder(),
+                  ),
+                  MyTile(
+                    title: 'Svenska',
+                    boarder: CircleBorder(),
+                  ),
+                  MyTile(
+                    title: 'Türkçe',
+                    boarder: CircleBorder(),
+                  ),
+                  MyTile(
+                    title: '普通话',
+                    boarder: CircleBorder(),
+                  ),
+                  MyTile(
+                    title: 'بالعربية',
+                    boarder: CircleBorder(),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
     );
   }
 }

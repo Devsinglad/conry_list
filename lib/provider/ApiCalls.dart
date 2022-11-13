@@ -9,6 +9,9 @@ class ApiDB extends ChangeNotifier {
   var decodeData;
   bool isLoading = true;
   var countryList;
+  List<Country> results = [];
+  TextEditingController controller = TextEditingController();
+  var searchResult;
 
   Future<Country?> getCountryList() async {
     Map<String, String> requestHeaders = {
@@ -29,12 +32,16 @@ class ApiDB extends ChangeNotifier {
 
       if (response.statusCode == 200 || response.statusCode == 201) {
         decodeData = jsonDecode(utf8.decode(response.bodyBytes));
+        searchResult = jsonDecode(utf8.decode(response.bodyBytes));
+        // results = decodeData.map((e) => Country.fromJson(e)).toList;
+        // print(results.length);
         //var resp = Country.fromJson(decodeData).currencies?.mRU;
 
         for (var i = 0; i < decodeData.length; i++) {
           //tapping into the api properties.
-          countryList = ((decodeData[i]['name']['official']));
-          countryFlag = ((decodeData[i]['currencies']));
+          countryList = ((decodeData[i]['timezones']));
+          countryFlag = ((decodeData[i]['continents']));
+          //print(countryList);
         }
         Future.delayed(Duration(seconds: 5)).then((value) {
           isLoading = false;

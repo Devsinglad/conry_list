@@ -126,7 +126,7 @@ class _CountryDetailsState extends State<CountryDetails> {
                   provider: provider,
                   info: info,
                   title: 'Capital: ',
-                  subtitle: '${info['capital']}'),
+                  subtitle: '${info['capital'][0]}'),
               smallHeight,
               countryApiDetails(
                 provider: provider,
@@ -139,7 +139,7 @@ class _CountryDetailsState extends State<CountryDetails> {
                 provider: provider,
                 info: info,
                 title: 'Language: ',
-                subtitle: '${info['languages']}',
+                subtitle: '${info['languages'].values.first}',
               ),
               countryApiDetails(
                 provider: provider,
@@ -159,16 +159,14 @@ class _CountryDetailsState extends State<CountryDetails> {
                 provider: provider,
                 info: info,
                 title: 'Currency: ',
-                subtitle: '${info['currencies']}'
-                    .substring(7, ['currencies'].length + 32),
+                subtitle: '${info['currencies'].values.first['name']}',
               ),
               spaceHeight,
               countryApiDetails(
                 provider: provider,
                 info: info,
                 title: 'Timezone: ',
-                subtitle: '${info['timezones']}'
-                    .substring(1, ['currencies'].length + 10),
+                subtitle: '${info['timezones'][0]}',
               ),
               smallHeight,
               countryApiDetails(
@@ -182,7 +180,7 @@ class _CountryDetailsState extends State<CountryDetails> {
                 provider: provider,
                 info: info,
                 title: 'Lat/Lon: ',
-                subtitle: '${info['latlng']}',
+                subtitle: '${info['latlng'][0]}',
               ),
               smallHeight,
               countryApiDetails(

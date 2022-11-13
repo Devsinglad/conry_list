@@ -44,13 +44,16 @@ class ApiList extends StatelessWidget {
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          MyAlphabets[index].toString(),
-                        ),
+                        provider2.controller.text.isEmpty ||
+                                provider2.controller.text == ''
+                            ? Text(
+                                MyAlphabets[index].toString(),
+                              )
+                            : SizedBox.shrink(),
                         ListView.builder(
                           shrinkWrap: true,
                           physics: NeverScrollableScrollPhysics(),
-                          itemCount: snapshot.decodeData
+                          itemCount: snapshot.searchResult
                               .where((element) =>
                                   element['name']['official']
                                       .toString()
@@ -59,8 +62,8 @@ class ApiList extends StatelessWidget {
                                   MyAlphabets[index].toString())
                               .length,
                           itemBuilder: (context, i) {
-                            List nestList = List.from(snapshot.decodeData.where(
-                                (element) =>
+                            List nestList = List.from(snapshot.searchResult
+                                .where((element) =>
                                     element['name']['official']
                                         .toString()
                                         .toUpperCase()
@@ -73,12 +76,15 @@ class ApiList extends StatelessWidget {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (_) => CountryDetails(
-                                              countryDetails: info,
-                                            )));
+                                      builder: (_) => CountryDetails(
+                                        countryDetails: info,
+                                      ),
+                                    ));
                               },
                               title: Text('${info['name']['official']}'),
-                              subtitle: Text('${info['capital']}'),
+                              subtitle: Text(info['capital'] != null
+                                  ? '${info['capital'][0]}'
+                                  : 'nothing found'),
                               leading: CustomBbox(
                                 context: context,
                                 width: MediaQuery.of(context).size.width / 8,

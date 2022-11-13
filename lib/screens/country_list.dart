@@ -16,11 +16,43 @@ class CountryList extends StatefulWidget {
 }
 
 class _CountryListState extends State<CountryList> {
+  Map filter = {};
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Future.delayed(Duration.zero).then((value) {
+      final provider = Provider.of<ThemeProvider>(context, listen: false);
+      final provider2 = Provider.of<ApiDB>(context, listen: false);
+      provider2.getCountryList();
+    });
+  }
+
+  void searchCountry(String query) {
+    final provider2 = Provider.of<ApiDB>(context, listen: false);
+
+    if (query.isNotEmpty) {
+      provider2.controller.text = query;
+      provider2.searchResult.clear;
+      provider2.searchResult = List.from(
+        provider2.decodeData.where((element) => element['name']['official']
+            .toString()
+            .toLowerCase()
+            .contains(query.toString().toLowerCase())),
+      );
+      setState(() {});
+    } else {
+      provider2.controller.clear();
+      provider2.searchResult.clear;
+      provider2.searchResult = List.from(provider2.decodeData);
+      setState(() {});
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<ThemeProvider>(context);
     final provider2 = Provider.of<ApiDB>(context, listen: false);
-    provider2.getCountryList();
     return SafeArea(
       child: Scaffold(
         backgroundColor: provider.isDark ? DarkModeColor : Colors.white,
@@ -57,6 +89,9 @@ class _CountryListState extends State<CountryList> {
               ),
               spaceHeight,
               TextField(
+                onChanged: (value) {
+                  searchCountry(value);
+                },
                 decoration: InputDecoration(
                   fillColor: provider.isDark ? Color(0xff202A44) : Colors.grey,
                   filled: true,
