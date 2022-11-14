@@ -46,7 +46,7 @@ class ApiList extends StatelessWidget {
                                                 .substring(0, 1) ==
                                             MyAlphabets[index].toString())
                                         .length ==
-                                    0
+                                    1
                             ? Text(
                                 MyAlphabets[index].toString(),
                               )

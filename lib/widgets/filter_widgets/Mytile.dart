@@ -125,11 +125,9 @@ class _LangTileState extends State<LangTile> {
         onChanged: (newvalue) {
           setState(() {
             value = newvalue!;
-            // value == false
-            //     ? provider.languageList.clear()
-            //     : provider.languageList.add(widget.title);
-            // provider.searchCountry("null");
-            // provider.languageList.clear();
+            value == false
+                ? provider.languageList.clear()
+                : provider.languageList.add(widget.title);
           });
         },
       ),

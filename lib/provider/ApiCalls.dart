@@ -109,12 +109,44 @@ class ApiDB extends ChangeNotifier {
       }
     }
   }
-}
 
-// else if (languageList.isNotEmpty) {
-// searchResult = decodeData
-//     .where((element) => (element["languages"].values.first.toString() ==
-// "${languageList[0].toString()}"))
-//     .toList();
-// notifyListeners();
-// }
+  void searchLanguage(String? query) {
+    if (query!.isNotEmpty && query != "null") {
+      controller.text = query;
+
+      searchResult.clear;
+      searchResult = List.from(
+        decodeData.where((element) => element['name']['official']
+            .toString()
+            .toLowerCase()
+            .contains(query.toString().toLowerCase())),
+      );
+
+      notifyListeners();
+    } else {
+      controller.clear();
+
+      searchResult.clear;
+      if (languageList.isNotEmpty) {
+        searchResult = decodeData
+            .where((element) => (element["languages"].values.first.toString() ==
+                "${languageList[0].toString()}"))
+            .map();
+        notifyListeners();
+      } else if (languageList.isNotEmpty && regionList.isNotEmpty) {
+        searchResult = decodeData
+            .where((element) =>
+                (element['continents'][0].toString() ==
+                    "${regionList[0].toString()}") &&
+                (element["languages"].values.first.toString() ==
+                    "${languageList[0].toString()}"))
+            .toList();
+        notifyListeners();
+      } else {
+        controller.clear();
+        searchResult = List.from(decodeData);
+        notifyListeners();
+      }
+    }
+  }
+}

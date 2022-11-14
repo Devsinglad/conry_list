@@ -45,8 +45,10 @@ class _LanguageSheetState extends State<LanguageSheet> {
                     title: 'Filter',
                     widget: InkWell(
                       onTap: () {
-                        //
+                        provider2.searchLanguage("null");
                         Navigator.pop(context);
+                        provider2.languageList.clear();
+
                         //
                       },
                       child: Container(

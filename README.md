@@ -10,6 +10,7 @@ The app was built using flutter.
 The app shows a List of different countries,capital and there details.
 Search Functionality was implemented on the app in which you can filter through different regions and time zones and languages.
 Orderly arrangement of the list of countries in alphabetical order.
+Internet Check was implemented with the use of connectivity package.
 
 Code Base:
 The code base was written with dart programming language.
@@ -23,8 +24,8 @@ FEATURES TO BE ADDED:
 MAps of the different.
 
 CHALLENGES:
-challenges on how to implement the search and filter functionality.
-challenges on how to implement the translation functionality from the API.
+challenges on how to implement the search and filter functionality but found my way around it.
+challenges on how to implement the language search functionality from the API.
 Difficulty in tapping into the properties of of the API.
 
 -![ScreenShot](assets/image/darkMode.png)
@@ -33,6 +34,7 @@ Difficulty in tapping into the properties of of the API.
 -![ScreenShot](assets/image/translation.png)
 -![ScreenShot](assets/image/search_result.png)
 -![ScreenShot](assets/image/filter.png)
+-![ScreenShot](assets/image/internet.png)
 
 
 - [LinkedIn Profile](https://www.linkedin.com/in/simon-singlad-chuwkwu-915115244/)
