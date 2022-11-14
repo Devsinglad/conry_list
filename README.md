@@ -19,6 +19,8 @@ This project is a starting point for a Flutter application.
 
 LIBS
 provider:The provider package was used to provides a state management technique that is used for managing a piece of data around the app.
+Connectivity used in checking for internet connection
+
 
 FEATURES TO BE ADDED:
 MAps of the different.
@@ -40,8 +42,9 @@ Difficulty in tapping into the properties of of the API.
 - [LinkedIn Profile](https://www.linkedin.com/in/simon-singlad-chuwkwu-915115244/)
 - [Github](https://www.github.com/devsinglad)
 - [Email](simonsinglad5@gmail.com)
-- [Apetize.io Link](https://appetize.io/app/eah7dycnevv57ecxgqiwhg2pbi?device=pixel4&osVersion=11.0&scale=75)
-- [Apk File Link](https://drive.google.com/drive/folders/1-ZwKCI_LnvgtDuiF6G8vWYtZLRedld38?usp=sharing)
+- [Apetize.io Link](https://appetize.io/app/qwq3ih5xdp3dqlkl5ssvazdvai?device=pixel4&osVersion=11.0&scale=75)
+- [Release Apk File Link](https://drive.google.com/file/d/1g4f1tl_4jIwBaT16TafPOmYIFqRaW0ha/view?usp=sharing)
+- [Apk File Link](https://drive.google.com/file/d/1-lJ8waUx4mjzRCRFdgFtdZFQTUscRPaA/view?usp=sharing)
 
 
 
