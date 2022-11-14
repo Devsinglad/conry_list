@@ -18,14 +18,6 @@ class ApiList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<ApiDB>(
       builder: (context, snapshot, _) {
-        // print(snapshot.decodeData
-        //     .where((element) =>
-        //         element['name']['official']
-        //             .toString()
-        //             .toUpperCase()
-        //             .substring(0, 1) ==
-        //         'A')
-        //     .length);
         return provider2.isLoading == true
             ? Center(
                 child: CircularProgressIndicator(
@@ -45,7 +37,16 @@ class ApiList extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         provider2.controller.text.isEmpty ||
-                                provider2.controller.text == ''
+                                provider2.controller.text == '' ||
+                                snapshot.searchResult
+                                        .where((element) =>
+                                            element['name']['official']
+                                                .toString()
+                                                .toUpperCase()
+                                                .substring(0, 1) ==
+                                            MyAlphabets[index].toString())
+                                        .length ==
+                                    0
                             ? Text(
                                 MyAlphabets[index].toString(),
                               )
@@ -107,3 +108,12 @@ class ApiList extends StatelessWidget {
     );
   }
 }
+
+// print(snapshot.decodeData
+//     .where((element) =>
+//         element['name']['official']
+//             .toString()
+//             .toUpperCase()
+//             .substring(0, 1) ==
+//         'A')
+//     .length);

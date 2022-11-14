@@ -1,3 +1,4 @@
+import 'package:conry_list/provider/ApiCalls.dart';
 import 'package:conry_list/widgets/filter_widgets/sheet_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -17,9 +18,9 @@ class _LanguageSheetState extends State<LanguageSheet> {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<ThemeProvider>(context);
+    final provider2 = Provider.of<ApiDB>(context);
     return DraggableScrollableSheet(
       snap: false,
-      controller: DraggableScrollableController(),
       initialChildSize: 0.8,
       maxChildSize: 0.8,
       builder: (context, scrollController) {
@@ -44,7 +45,9 @@ class _LanguageSheetState extends State<LanguageSheet> {
                     title: 'Filter',
                     widget: InkWell(
                       onTap: () {
+                        //
                         Navigator.pop(context);
+                        //
                       },
                       child: Container(
                         height: 20,
@@ -58,8 +61,8 @@ class _LanguageSheetState extends State<LanguageSheet> {
                     ),
                   ),
                   spaceHeight,
-                  MyTile(
-                    title: 'Bahasa',
+                  LangTile(
+                    title: 'Arabic',
                     boarder: CircleBorder(),
                     color: MaterialStateProperty.resolveWith((states) {
                       if (states.contains(MaterialState.disabled)) {
@@ -68,8 +71,8 @@ class _LanguageSheetState extends State<LanguageSheet> {
                       return Colors.grey;
                     }),
                   ),
-                  MyTile(
-                    title: 'Deutsch',
+                  LangTile(
+                    title: 'Dutch',
                     boarder: CircleBorder(),
                     color: MaterialStateProperty.resolveWith((states) {
                       if (states.contains(MaterialState.disabled)) {
@@ -78,7 +81,7 @@ class _LanguageSheetState extends State<LanguageSheet> {
                       return Colors.grey;
                     }),
                   ),
-                  MyTile(
+                  LangTile(
                     title: 'English',
                     boarder: CircleBorder(),
                     color: MaterialStateProperty.resolveWith((states) {
@@ -88,8 +91,8 @@ class _LanguageSheetState extends State<LanguageSheet> {
                       return Colors.grey;
                     }),
                   ),
-                  MyTile(
-                    title: 'Español',
+                  LangTile(
+                    title: 'Guaraní',
                     boarder: CircleBorder(),
                     color: MaterialStateProperty.resolveWith((states) {
                       if (states.contains(MaterialState.disabled)) {
@@ -98,8 +101,8 @@ class _LanguageSheetState extends State<LanguageSheet> {
                       return Colors.grey;
                     }),
                   ),
-                  MyTile(
-                    title: 'Française',
+                  LangTile(
+                    title: 'French',
                     boarder: CircleBorder(),
                     color: MaterialStateProperty.resolveWith((states) {
                       if (states.contains(MaterialState.disabled)) {
@@ -108,8 +111,8 @@ class _LanguageSheetState extends State<LanguageSheet> {
                       return Colors.grey;
                     }),
                   ),
-                  MyTile(
-                    title: 'Italiano',
+                  LangTile(
+                    title: 'Spanish',
                     boarder: CircleBorder(),
                     color: MaterialStateProperty.resolveWith((states) {
                       if (states.contains(MaterialState.disabled)) {
@@ -118,8 +121,8 @@ class _LanguageSheetState extends State<LanguageSheet> {
                       return Colors.grey;
                     }),
                   ),
-                  MyTile(
-                    title: 'Bahasa',
+                  LangTile(
+                    title: 'Russian',
                     boarder: CircleBorder(),
                     color: MaterialStateProperty.resolveWith((states) {
                       if (states.contains(MaterialState.disabled)) {
@@ -128,8 +131,8 @@ class _LanguageSheetState extends State<LanguageSheet> {
                       return Colors.grey;
                     }),
                   ),
-                  MyTile(
-                    title: 'Português',
+                  LangTile(
+                    title: 'Chinese',
                     boarder: CircleBorder(),
                     color: MaterialStateProperty.resolveWith((states) {
                       if (states.contains(MaterialState.disabled)) {
@@ -138,8 +141,8 @@ class _LanguageSheetState extends State<LanguageSheet> {
                       return Colors.grey;
                     }),
                   ),
-                  MyTile(
-                    title: 'Pу́сский',
+                  LangTile(
+                    title: 'Maldivian',
                     boarder: CircleBorder(),
                     color: MaterialStateProperty.resolveWith((states) {
                       if (states.contains(MaterialState.disabled)) {
@@ -148,8 +151,8 @@ class _LanguageSheetState extends State<LanguageSheet> {
                       return Colors.grey;
                     }),
                   ),
-                  MyTile(
-                    title: 'Svenska',
+                  LangTile(
+                    title: 'Bislama',
                     boarder: CircleBorder(),
                     color: MaterialStateProperty.resolveWith((states) {
                       if (states.contains(MaterialState.disabled)) {
@@ -158,28 +161,8 @@ class _LanguageSheetState extends State<LanguageSheet> {
                       return Colors.grey;
                     }),
                   ),
-                  MyTile(
-                    title: 'Türkçe',
-                    boarder: CircleBorder(),
-                    color: MaterialStateProperty.resolveWith((states) {
-                      if (states.contains(MaterialState.disabled)) {
-                        return Colors.grey;
-                      }
-                      return Colors.grey;
-                    }),
-                  ),
-                  MyTile(
-                    title: '普通话',
-                    boarder: CircleBorder(),
-                    color: MaterialStateProperty.resolveWith((states) {
-                      if (states.contains(MaterialState.disabled)) {
-                        return Colors.grey;
-                      }
-                      return Colors.grey;
-                    }),
-                  ),
-                  MyTile(
-                    title: 'بالعربية',
+                  LangTile(
+                    title: 'Berber',
                     boarder: CircleBorder(),
                     color: MaterialStateProperty.resolveWith((states) {
                       if (states.contains(MaterialState.disabled)) {

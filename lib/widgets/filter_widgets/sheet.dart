@@ -19,9 +19,9 @@ class _SheetState extends State<Sheet> {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<ThemeProvider>(context);
+    final provider2 = Provider.of<ApiDB>(context);
     return DraggableScrollableSheet(
       snap: false,
-      controller: DraggableScrollableController(),
       initialChildSize: 0.3,
       maxChildSize: 0.8,
       builder: (context, scrollController) {
@@ -79,7 +79,7 @@ class _SheetState extends State<Sheet> {
                         title: 'Europe',
                       ),
                       MyTile(
-                        title: 'North America',
+                        title: "North America",
                       ),
                       MyTile(
                         title: 'South America',
@@ -92,29 +92,29 @@ class _SheetState extends State<Sheet> {
                       title: 'Time Zone',
                     ),
                     children: [
-                      MyTile(
-                        title: 'GMT+1:00',
+                      Timetile(
+                        title: 'UTC-04:00',
                       ),
-                      MyTile(
-                        title: 'GMT+2:00',
+                      Timetile(
+                        title: 'UTC-03:00',
                       ),
-                      MyTile(
-                        title: 'GMT+3:00',
+                      Timetile(
+                        title: 'UTC+01:00',
                       ),
-                      MyTile(
-                        title: 'GMT+4:00',
+                      Timetile(
+                        title: 'UTC+05:00',
                       ),
-                      MyTile(
-                        title: 'GMT+5:00',
+                      Timetile(
+                        title: 'UTC-08:00',
                       ),
-                      MyTile(
-                        title: 'GMT+6:00',
+                      Timetile(
+                        title: 'UTC-11:00',
                       ),
-                      MyTile(
-                        title: 'GMT+7:00',
+                      Timetile(
+                        title: 'UTC-06:00',
                       ),
-                      MyTile(
-                        title: 'GMT-6:00',
+                      Timetile(
+                        title: 'UTC+12:00',
                       ),
                     ],
                   ),
@@ -122,33 +122,48 @@ class _SheetState extends State<Sheet> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      CustomBbox(
-                        height: MediaQuery.of(context).size.height * 0.05,
-                        width: MediaQuery.of(context).size.width * 0.2,
-                        color: provider.isDark ? DarkModeColor : Colors.white,
-                        radius: BorderRadius.circular(10),
-                        border: Border.all(
-                          color: provider.isDark ? Colors.white : Colors.black,
-                          width: 2,
-                        ),
-                        context: context,
-                        widget: Center(
-                          child: MyText(
-                            context: context,
-                            title: 'Reset',
+                      InkWell(
+                        onTap: () {
+                          provider2.timeZoneList.clear();
+                          provider2.regionList.clear();
+                        },
+                        child: CustomBbox(
+                          height: MediaQuery.of(context).size.height * 0.05,
+                          width: MediaQuery.of(context).size.width * 0.2,
+                          color: provider.isDark ? DarkModeColor : Colors.white,
+                          radius: BorderRadius.circular(10),
+                          border: Border.all(
+                            color:
+                                provider.isDark ? Colors.white : Colors.black,
+                            width: 2,
+                          ),
+                          context: context,
+                          widget: Center(
+                            child: MyText(
+                              context: context,
+                              title: 'Reset',
+                            ),
                           ),
                         ),
                       ),
-                      CustomBbox(
-                        height: MediaQuery.of(context).size.height * 0.05,
-                        width: MediaQuery.of(context).size.width * 0.5,
-                        color: Colors.deepOrange,
-                        radius: BorderRadius.circular(5),
-                        context: context,
-                        widget: Center(
-                          child: MyText(
-                            context: context,
-                            title: 'Show Result',
+                      InkWell(
+                        onTap: () {
+                          provider2.searchCountry("null");
+                          provider2.regionList.clear();
+                          provider2.timeZoneList.clear();
+                          Navigator.pop(context);
+                        },
+                        child: CustomBbox(
+                          height: MediaQuery.of(context).size.height * 0.05,
+                          width: MediaQuery.of(context).size.width * 0.5,
+                          color: Colors.deepOrange,
+                          radius: BorderRadius.circular(5),
+                          context: context,
+                          widget: Center(
+                            child: MyText(
+                              context: context,
+                              title: 'Show Result',
+                            ),
                           ),
                         ),
                       ),

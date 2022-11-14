@@ -1,6 +1,5 @@
 import 'package:conry_list/const.dart';
 import 'package:conry_list/provider/ApiCalls.dart';
-import 'package:conry_list/widgets/Mytext.dart';
 import 'package:conry_list/widgets/customBox.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -16,7 +15,7 @@ class CountryList extends StatefulWidget {
 }
 
 class _CountryListState extends State<CountryList> {
-  Map filter = {};
+  bool filter = true;
   @override
   void initState() {
     // TODO: implement initState
@@ -26,29 +25,6 @@ class _CountryListState extends State<CountryList> {
       final provider2 = Provider.of<ApiDB>(context, listen: false);
       provider2.getCountryList();
     });
-  }
-
-  void searchCountry(String query) {
-    final provider2 = Provider.of<ApiDB>(context, listen: false);
-
-    if (query.isNotEmpty) {
-      provider2.controller.text = query;
-
-      provider2.searchResult.clear;
-      provider2.searchResult = List.from(
-        provider2.decodeData.where((element) => element['name']['official']
-            .toString()
-            .toLowerCase()
-            .contains(query.toString().toLowerCase())),
-      );
-
-      setState(() {});
-    } else {
-      provider2.controller.clear();
-      provider2.searchResult.clear;
-      provider2.searchResult = List.from(provider2.decodeData);
-      setState(() {});
-    }
   }
 
   @override
@@ -93,7 +69,7 @@ class _CountryListState extends State<CountryList> {
               spaceHeight,
               TextField(
                 onChanged: (value) {
-                  searchCountry(value);
+                  provider2.searchCountry(value);
                 },
                 decoration: InputDecoration(
                   fillColor: provider.isDark ? Color(0xff202A44) : Colors.grey,
