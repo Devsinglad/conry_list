@@ -31,13 +31,15 @@ Difficulty in tapping into the properties of of the API.
 -![ScreenShot](assets/image/details.png)
 -![ScreenShot](assets/image/lightMode.png)
 -![ScreenShot](assets/image/translation.png)
--![ScreenShot](assets/image/search result.png)
+-![ScreenShot](assets/image/search_result.png)
 -![ScreenShot](assets/image/filter.png)
 
 
 - [LinkedIn Profile](https://www.linkedin.com/in/simon-singlad-chuwkwu-915115244/)
 - [Github](https://www.github.com/devsinglad)
 - [Email](simonsinglad5@gmail.com)
+- [Apetize.io Link](https://appetize.io/app/eah7dycnevv57ecxgqiwhg2pbi?device=pixel4&osVersion=11.0&scale=75)
+- [Apk File Link](https://drive.google.com/drive/folders/1-ZwKCI_LnvgtDuiF6G8vWYtZLRedld38?usp=sharing)
 
 
 
